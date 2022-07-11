@@ -22,6 +22,9 @@ requirements:
     - cmake
     - ninja
     - conan
+    - spdlog 1.10.0
+    - nlohmann_json 3.10.3
+    - fmt 8.1.1
   host:
     - python
     - h5py
