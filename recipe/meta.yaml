@@ -10,7 +10,7 @@ source:
   sha256: 4aa4eb3d8797fa28055823ac5ffbfc1b3f92a73f981ef4357ce4c33d3ad88322
 
 build:
-  number: 1
+  number: 2
   skip: true  # [win]
   rpaths:
     - lib/
@@ -19,28 +19,32 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - python  # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}  # [build_platform != target_platform]
+    - numpy  # [build_platform != target_platform]
+    - hdf5  # [build_platform != target_platform]
+    - pybind11
     - cmake
     - ninja
     - conan
     - spdlog 1.10.0
     - nlohmann_json 3.10.3
     - fmt 8.1.1
-    - pybind11 2.9.2
   host:
     - python
     - h5py
-    - hdf5
     - zlib 1.2.*
     - blosc 1.21.1
-    - numpy >=1.14
+    - numpy
+    - hdf5
   run:
     - python
     - {{ pin_compatible('numpy') }}
     - h5py
     - pint
     - tqdm
-    - hdf5
     - zlib 1.2.*
+    - hdf5
 
 test:
   imports:
