@@ -15,9 +15,6 @@ build:
   rpaths:
     - lib/
 
-build_platform:
-  osx_arm64: osx_64
-
 requirements:
   build:
     - {{ compiler('c') }}
@@ -49,7 +46,6 @@ requirements:
     - hdf5
     - zlib 1.2.*
 
-test: native_and_emulated
 test:
   imports:
     - readdy
