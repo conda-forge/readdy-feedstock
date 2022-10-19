@@ -29,10 +29,10 @@ requirements:
     - spdlog 1.10.0
     - nlohmann_json 3.10.3
     - fmt 8.1.1
+    - hdf5
   host:
     - python
     - h5py
-    - hdf5
     - zlib 1.2.*
     - blosc 1.21.1
     - numpy
@@ -42,7 +42,6 @@ requirements:
     - h5py
     - pint
     - tqdm
-    - hdf5
     - zlib 1.2.*
 
 test:
