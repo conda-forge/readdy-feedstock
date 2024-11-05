@@ -10,7 +10,7 @@ source:
   sha256: 4aa4eb3d8797fa28055823ac5ffbfc1b3f92a73f981ef4357ce4c33d3ad88322
 
 build:
-  number: 2
+  number: 3
   skip: true  # [win]
   rpaths:
     - lib/
@@ -18,10 +18,11 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - cmake
     - ninja
-    - conan
+    - conan <2
     - spdlog 1.10.0
     - nlohmann_json 3.10.3
     - fmt 8.1.1
@@ -35,7 +36,6 @@ requirements:
     - numpy >=1.14
   run:
     - python
-    - {{ pin_compatible('numpy') }}
     - h5py
     - pint
     - tqdm
