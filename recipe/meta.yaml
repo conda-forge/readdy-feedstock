@@ -1,5 +1,5 @@
 {% set name = "readdy" %}
-{% set version = "2.0.12" %}
+{% set version = "2.0.13" %}
 
 package:
   name: {{ name }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 4aa4eb3d8797fa28055823ac5ffbfc1b3f92a73f981ef4357ce4c33d3ad88322
+  sha256: 3844a462a143389340c892386004db807e38847db9fb2c847194a7f40ce7b409
 
 build:
-  number: 2
+  number: 0
   skip: true  # [win]
   rpaths:
     - lib/
@@ -18,14 +18,14 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - cmake
     - ninja
-    - conan
-    - spdlog 1.10.0
-    - nlohmann_json 3.10.3
-    - fmt 8.1.1
-    - pybind11 2.9.2
+    - spdlog >=1.15.0
+    - nlohmann_json >=3.12.0
+    - fmt >=11.2.0
+    - pybind11 >=2.13.6
   host:
     - python
     - h5py
@@ -40,15 +40,16 @@ requirements:
     - pint
     - tqdm
     - hdf5
+    - fmt >=11.2.0
     - zlib 1.2.*
 
 test:
   imports:
     - readdy
   requires:
-    - nose
+    - pytest
   commands:
-    - nosetests readdy -s -vv --with-doctest --doctest-options=+NORMALIZE_WHITESPACE,+ELLIPSIS
+    - python -m pytest --pyargs readdy.tests -v
 
 about:
   home: https://github.com/readdy/readdy
