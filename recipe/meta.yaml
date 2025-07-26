@@ -10,7 +10,7 @@ source:
   sha256: 3844a462a143389340c892386004db807e38847db9fb2c847194a7f40ce7b409
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
   rpaths:
     - lib/
@@ -22,26 +22,24 @@ requirements:
     - {{ compiler('cxx') }}
     - cmake
     - ninja
-    - spdlog >=1.15.0
-    - nlohmann_json >=3.12.0
-    - fmt >=11.2.0
-    - pybind11 >=2.13.6
   host:
     - python
+    - blosc
     - h5py
     - hdf5
-    - zlib 1.2.*
-    - blosc 1.21.1
-    - numpy >=1.14
+    - fmt
+    - nlohmann_json
+    - numpy
+    - pybind11
+    - pybind11-abi
+    - spdlog
+    - zlib
   run:
     - python
-    - {{ pin_compatible('numpy') }}
     - h5py
     - pint
     - tqdm
     - hdf5
-    - fmt >=11.2.0
-    - zlib 1.2.*
 
 test:
   imports:
