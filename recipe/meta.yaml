@@ -8,6 +8,8 @@ package:
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz
   sha256: 3844a462a143389340c892386004db807e38847db9fb2c847194a7f40ce7b409
+  patches:
+    - fix-hdf5-version-check.patch
 
 build:
   number: 7
